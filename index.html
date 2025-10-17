@@ -6,36 +6,58 @@
     <title>Que horas eu saio?</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
-    <head>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/vuetify@3/dist/vuetify.min.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=roboto:400,500,700"
-      />
-      <script type="importmap">
-        {
-          "imports": {
-            "vue": "https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.esm-browser.js",
-            "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3/dist/vuetify.esm.js"
-          }
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vuetify@3/dist/vuetify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.bunny.net/css?family=roboto:400,500,700"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.esm-browser.js",
+          "vuetify": "https://cdn.jsdelivr.net/npm/vuetify@3/dist/vuetify.esm.js"
         }
-      </script>
-    </head>
+      }
+    </script>
   </head>
   <body>
-    <section class="container">
-      <!-- <section class="title"> -->
-      <h2 class="">Que horas eu saio?</h2>
-      <p>Descubra a hora de saída ideal com base na sua jornada de trabalho.</p>
-      <!-- </section> -->
-      <section class="form">
+    <section
+      class="container d-flex flex-column align-center justify-center pa-6"
+    >
+      <h2 class="text-center d-flex align-items-center">
+        <i class="mdi mdi-clock-outline mdi-24px mr-2"></i>
+        Que horas eu saio?
+      </h2>
+      <p class="text-center">
+        Descubra a hora de saída ideal com base na sua jornada de trabalho.
+      </p>
+
+      <section class="form w-100">
         <form id="work-schedule-form">
           <div class="form-group">
             <label for="start-time">Hora de Início:</label>
@@ -43,20 +65,21 @@
               type="time"
               id="start-time"
               name="start-time"
-              class="border rounded pa-2"
+              class="border rounded pa-2 full-width"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="break-duration">Duração do Intervalo (minutos):</label>
+            <label for="break-duration">Duração do Intervalo (horas):</label>
             <input
-              type="number"
+              type="time"
               id="break-duration"
               name="break-duration"
-              class="border rounded pa-2"
-              min="0"
+              class="border rounded pa-2 full-width"
               required
+              min="01:00"
+              max="02:00"
             />
           </div>
           <div class="form-group">
@@ -67,24 +90,22 @@
               type="number"
               id="work-duration"
               name="work-duration"
-              class="border rounded pa-2"
+              class="border rounded pa-2 full-width"
               value="8"
               min="1"
               required
             />
           </div>
-          <div class="d-flex w-100 mt-8">
-            <button
-              class="v-btn v-btn--block v-btn--elevated v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-elevated v-btn--variant-tonal"
-              type="submit"
-              block
-            >
-              <i class="mdi mdi-calculator mdi-18px"></i>
-              Calcular Hora de Saída
+
+          <div class="d-flex w-100 mt-4">
+            <button class="v-btn v-btn--elevated full-width" type="submit">
+              <i class="mdi mdi-calculator mdi-18px" aria-hidden="true"></i>
+              <span style="margin-left: 8px">Calcular Hora de Saída</span>
             </button>
           </div>
         </form>
       </section>
+
       <h3 class="font-weight-thin text-grey-darken-4">
         <div id="result"></div>
       </h3>

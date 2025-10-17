@@ -13,12 +13,13 @@ form.addEventListener("submit", function (event) {
 
 function calculateExitTime(startTime, breakDuration, workDuration) {
   const [startHours, startMinutes] = startTime.split(":").map(Number);
-  const breakMinutes = parseInt(breakDuration, 10);
+  const [breakHours, breakMinutes] = breakDuration.split(":").map(Number);
   const workMinutes = parseInt(workDuration, 10) * 60;
 
   const totalMinutes = startMinutes + breakMinutes + workMinutes;
 
-  const exitHours = (startHours + Math.floor(totalMinutes / 60)) % 24;
+  const exitHours =
+    (startHours + breakHours + Math.floor(totalMinutes / 60)) % 24;
   const exitMinutes = totalMinutes % 60;
 
   return `${exitHours.toString().padStart(2, "0")}:${exitMinutes
